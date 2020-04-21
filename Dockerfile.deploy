@@ -1,7 +1,8 @@
-FROM golang:1.14
+FROM golang:1.14 as builder
 
 ENV APP_USER app
 ENV APP_HOME /go/src/demo-math-app
+ENV GOPROXY=https://goproxy.io
 
 RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
 RUN mkdir -p $APP_HOME && chown -R $APP_USER:$APP_USER $APP_HOME
